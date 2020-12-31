@@ -1,2 +1,2 @@
 # scraper-FE
- Jobs Scraper Front End made in Angular
+ Jobs Scraper Frontend made in Angular
