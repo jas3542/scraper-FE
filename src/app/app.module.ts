@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { JobComponent } from './job/job.component';
 
 import { JobService } from './../job.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { JobService } from './../job.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [JobService],
   bootstrap: [AppComponent]
