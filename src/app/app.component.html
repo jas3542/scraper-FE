@@ -1,2 +1,3 @@
 <router-outlet></router-outlet>
-<app-job></app-job>
+<h4 id="total_jobs">Total Jobs: {{total_Jobs}}</h4>
+<app-job (jobs_Count)="totalJobs($event)"></app-job>

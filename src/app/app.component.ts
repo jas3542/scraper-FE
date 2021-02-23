@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'scraper-FE';
+  public total_Jobs:number;
+
+  public totalJobs(firedEvent: any) {
+    this.total_Jobs = firedEvent;
+  }
 }

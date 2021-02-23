@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JobService } from 'src/job.service';
 import { Job } from 'src/app/Job';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-job',
@@ -8,12 +9,16 @@ import { Job } from 'src/app/Job';
   styleUrls: ['./job.component.css']
 })
 export class JobComponent implements OnInit {
+  
+  @Output() jobs_Count: EventEmitter<number> = new EventEmitter<number>();
 
   public jobs: Job[] = [];
   constructor(private jobservice: JobService) {
     this.jobservice.getJobs().subscribe((data) => { 
       if (data != undefined) {
         this.jobs.push(data);
+        //this.jobs_Count.emit(this.jobs.length);
+        this.jobs_Count.emit(this.jobs[0]?.length);
       }else {
         console.log("no Data received");
       }
@@ -22,9 +27,9 @@ export class JobComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-   
-    console.log(this.jobs);
+    
+    
+    
   }
 
 }
