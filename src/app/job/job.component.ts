@@ -11,34 +11,33 @@ import { Output, EventEmitter } from '@angular/core';
 export class JobComponent implements OnInit {
   
   @Output() jobs_Count: EventEmitter<number> = new EventEmitter<number>();
-
   public jobs: Job[] = [];
-  constructor(private jobservice: JobService) {
+
+  constructor(private jobservice: JobService) {  }
+
+  ngOnInit(): void {
     this.jobservice.getJobs().subscribe((data) => { 
       if (data != undefined) {
-        this.jobs.push(data);
-        //this.jobs_Count.emit(this.jobs.length);
-        this.jobs_Count.emit(this.jobs[0]?.length);
+        this.jobs = data ;
+        this.jobs_Count.emit(this.jobs?.length);
+        console.log("i got the jobs ",this.jobs);
       }else {
         console.log("no Data received");
       }
-      console.log("i got the jobs ",this.jobs);
     });
   }
 
-  ngOnInit(): void {
-    
-    
-    
+  orderByList(value: any): void {
+    //console.log("testset",value);
+    this.jobservice.getJobsOrdered().subscribe((data) => {
+      if (data != undefined) {
+        this.jobs = data ;
+        console.log("i got the jobs ",this.jobs);
+      }else {
+        console.log("no Data received");
+      }
+    });
   }
 
+
 }
-
-// export class Job {
-//   public name: string;
-//   public location: string;
-//   public company_name: string;
-//   public salary: string;
-//   public description: string;
-// }
-
