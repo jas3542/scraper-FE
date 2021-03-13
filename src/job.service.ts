@@ -18,12 +18,24 @@ export class JobService {
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
-
   }
 
-  public getJobsOrdered() {
-    var httpParams = new HttpParams().append("sortBy","salary");
+  public getOrderedJobs(orderBy: string) {
+    var httpParams = new HttpParams().append("sortBy",orderBy);
+    console.log("orderBy -> ",orderBy);
     return this.httpClient.get<Job[]>("https://localhost:44300/jobs/getOrderedList",{params: httpParams})
+    .pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
+  }
+
+  public getFilteredJobs(filterBy: string) {
+    var text = encodeURIComponent(filterBy);
+    console.log("filterBy -> ",text);
+    var httpParams = new HttpParams().append("filterBy",text);
+    
+    return this.httpClient.get<Job[]>("https://localhost:44300/jobs/getFilteredList",{params: httpParams})
     .pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error

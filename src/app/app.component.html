@@ -1,3 +1,14 @@
 <router-outlet></router-outlet>
 <h4 id="total_jobs">Total Jobs: {{total_Jobs}}</h4>
-<app-job (jobs_Count)="totalJobs($event)"></app-job>
+
+<label for="sortBy">Sort By: </label>
+<select #selectValue (change)="orderByList(selectValue.value)" name="sortBy_dropdown" id="sortBy">
+    <option value=""></option>
+    <option value="salary" >Salary</option>
+</select>
+
+<label for="filterBy">Filter By: </label>
+<input #filter_words/>
+<button (click)="filterByList(filter_words.value)" [disabled]="filter_words.value===''"> Filter </button>
+
+<app-job [jobs]="jobs_list"></app-job>
