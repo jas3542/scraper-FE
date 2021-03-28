@@ -7,4 +7,7 @@ export class Job {
     Salary : string;
     JobDescriptionLink : string;
     JobDetailedDescription : string;
+    PostCode: number;
+    Borough: string;
+    City: string;
 }

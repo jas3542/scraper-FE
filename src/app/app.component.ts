@@ -12,6 +12,8 @@ export class AppComponent {
   public total_Jobs:number;
   public jobs_list: Job[] = [];
 
+  public filterBy_word = "";
+
   constructor(private jobservice: JobService) {
 
   }
@@ -31,6 +33,8 @@ export class AppComponent {
   }
 
   orderByList(value: any): void {
+    this.filterBy_word = ""; 
+    
     this.jobservice.getOrderedJobs(value).subscribe((data) => {
       if (data != undefined) {
         this.jobs_list = data ;
@@ -42,16 +46,22 @@ export class AppComponent {
     });
   }
 
-  filterByList(value: any): void {
-    this.jobservice.getFilteredJobs(value).subscribe((data) => { 
-      if (data != undefined) {
-        this.jobs_list = data ;
-        this.total_Jobs = this.jobs_list?.length;
-        console.log("I've got the filtered jobs ",this.jobs_list);
-      }else {
-        console.log("no Data received");
-      }
-    });
+  filterByList(): void {
+    console.log("received this value ", this.filterBy_word);
+      this.jobservice.getFilteredJobs(this.filterBy_word).subscribe((data) => { 
+        if (data != undefined) {
+          this.jobs_list = data ;
+          this.total_Jobs = this.jobs_list?.length;
+          console.log("I've got the filtered jobs ",this.jobs_list);
+        }else {
+          console.log("no Data received");
+        }
+      });
+   
+  }
+
+  filterBy_inputChanged(event: any) { // without type info
+    this.filterBy_word = event.target.value;
   }
 
 }

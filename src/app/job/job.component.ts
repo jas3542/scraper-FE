@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { JobService } from 'src/job.service';
 import { Job } from 'src/app/Job';
 import { Output, EventEmitter } from '@angular/core';
@@ -18,5 +18,6 @@ export class JobComponent implements OnInit {
   ngOnInit(): void {
     
   }
+
 
 }

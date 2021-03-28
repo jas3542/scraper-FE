@@ -32,7 +32,6 @@ export class JobService {
 
   public getFilteredJobs(filterBy: string) {
     var text = encodeURIComponent(filterBy);
-    console.log("filterBy -> ",text);
     var httpParams = new HttpParams().append("filterBy",text);
     
     return this.httpClient.get<Job[]>("https://localhost:44300/jobs/getFilteredList",{params: httpParams})
