@@ -1,3 +1,11 @@
-#job { padding: 10px 10px;}
-legend { padding: 5px 10px;}
-#job_description { margin: 15px; }
+
+.job { 
+    margin: 10px 10px; 
+    padding: 10px 10px; 
+}
+/* legend { padding: 5px 10px;} */
+.job_description { margin: 15px; }
+/* .apply-options { display: hidden !important; } */
+
+
+::ng-deep div.apply-options {display: none }

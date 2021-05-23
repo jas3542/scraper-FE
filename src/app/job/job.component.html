@@ -1,11 +1,15 @@
-<div id="job" *ngFor="let job of jobs">
-    <fieldset>
-        <legend>{{job.Title }} </legend>
-        <label>{{job.Borough}} </label>
-        <label>{{job.Company}} </label> ||
-        <label>{{job.Location}} </label> ||
-        <label>{{job.Salary}} </label>
-        <div [innerHTML]="job.JobDetailedDescription"  id="job_description"></div>
-        <a href={{job.JobDescriptionLink}}> Apply </a>
-    </fieldset>
+
+<div class="card job border-dark" *ngFor="let job of jobs">
+    <div class="card-header">
+        <span style="color:red">{{job.Title }}</span>  ||  {{job.Company}}  ||  {{job.Salary}}
+        </div>
+    <div class="card-body">
+        <!-- <h5 class="card-title"></h5> -->
+        <h6 class="card-subtitle mb-2 text-muted">{{job.Borough}} || {{job.Location}} </h6>
+        <p class="card-text" [innerHTML]="job.JobDetailedDescription"></p>
+        
+    </div>
+    <div class="card-footer text-muted">
+        <a href="{{job.JobDescriptionLink}}" class="card-link job_description"> Apply </a>
+    </div>
 </div>
