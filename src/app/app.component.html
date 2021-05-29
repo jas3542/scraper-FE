@@ -1,7 +1,13 @@
 <router-outlet></router-outlet>
 <h4 id="total_jobs">Total Jobs: {{total_Jobs}}</h4>
 
-<div id="jobs_tab">
+<nav class="nav nav-pills nav-justified">
+    <a class="nav-item nav-link" [ngClass]="{'active' : showJobsTab}" href="#" (click)="tabChanged(jobsTab)">jobs tab</a>
+    <a class="nav-item nav-link" [ngClass]="{'active' : showJobsMapTab}" href="#" (click)="tabChanged(jobsMapTab)">jobs map tab</a>
+    
+</nav>
+
+<div id="jobs_tab" #jobsTab class="nav-item nav-link" >
     <div id="row_sorting_and_filtering">
         <label for="sortBy">Sort By: </label>
         <select #selectValue (change)="orderByList(selectValue.value)" name="sortBy_dropdown" id="sortBy">
@@ -12,10 +18,11 @@
         <label id="label_filterby" for="filterBy">Filter By: </label>
         <input id="input_filterby" #filter_words [value]="filterBy_word" (keyup)="filterBy_inputChanged($event)"/>
         <!-- <input id="input_filterby" [value]="filterBy_word"/> -->
-        <button id="btn_filterby" (click)="filterByList()" > Filter </button>
+        <button id="btn_filterby"  > Filter </button>
     </div>
     <app-job [jobs]="jobs_list"></app-job>
 </div>
-<div id="jobs_map_tab">
+
+<div id="jobs_map_tab" #jobsMapTab class="nav-item nav-link" >
     
 </div>

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Job } from './Job';
 import { JobService } from 'src/job.service';
+import { ViewChild } from '@angular/core';
+import { ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +16,14 @@ export class AppComponent {
 
   public filterBy_word = "";
 
-  constructor(private jobservice: JobService) {
+  // Reference template variables inside Component
+  @ViewChild('jobsTab') jobsTab: ElementRef;
+  @ViewChild('jobsMapTab') jobs_map_tab: ElementRef;
+  
+  showJobsTab = true;
+  showJobsMapTab = false;
+
+  constructor(private jobservice: JobService,private renderer: Renderer2) {
 
   }
 
@@ -62,6 +71,29 @@ export class AppComponent {
 
   filterBy_inputChanged(event: any) { // without type info
     this.filterBy_word = event.target.value;
+  }
+
+  tabChanged(event:any) {
+    console.log(event.getAttribute("id"))
+    
+    if (event.getAttribute("id") == this.jobsTab.nativeElement.getAttribute("id")) {
+      this.jobsTab.nativeElement.hidden = false;
+      this.jobs_map_tab.nativeElement.hidden = true;
+      // For Template:
+      this.showJobsMapTab = false;
+      this.showJobsTab = true;
+      
+    }
+
+    if (event.getAttribute("id") == this.jobs_map_tab.nativeElement.getAttribute("id")) {
+      this.jobsTab.nativeElement.hidden = true;
+      this.jobs_map_tab.nativeElement.hidden = false;
+      // For Template: 
+      this.showJobsMapTab = true;
+      this.showJobsTab = false;
+    }
+
+    // console.log(this.jobsTab.nativeElement.getAttribute("id").hide())
   }
 
 }
