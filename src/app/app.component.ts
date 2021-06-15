@@ -20,14 +20,18 @@ export class AppComponent {
   @ViewChild('jobsTab') jobsTab: ElementRef;
   @ViewChild('jobsMapTab') jobs_map_tab: ElementRef;
   
-  showJobsTab = true;
-  showJobsMapTab = false;
+  showJobsTab;
+  showJobsMapTab;
 
   constructor(private jobservice: JobService,private renderer: Renderer2) {
-
+    // Hiding tabs on template:
+    this.showJobsTab = true;
+    this.showJobsMapTab = false;
   }
 
   ngOnInit(): void {
+    
+
     this.jobservice.getJobs().subscribe((data) => { 
       if (data != undefined) {
         this.jobs_list = data ;
