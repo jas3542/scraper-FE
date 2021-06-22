@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Job } from './Job';
 import { JobService } from 'src/job.service';
-import { ViewChild } from '@angular/core';
-import { ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -15,23 +13,15 @@ export class AppComponent {
   public jobs_list: Job[] = [];
 
   public filterBy_word = "";
-
-  // Reference template variables inside Component
-  @ViewChild('jobsTab') jobsTab: ElementRef;
-  @ViewChild('jobsMapTab') jobs_map_tab: ElementRef;
   
-  showJobsTab;
-  showJobsMapTab;
+  switchToMapTab; // used for ngIf and css purpose on the template.
 
-  constructor(private jobservice: JobService,private renderer: Renderer2) {
-    // Hiding tabs on template:
-    this.showJobsTab = true;
-    this.showJobsMapTab = false;
+  constructor(private jobservice: JobService) {
+    this.switchToMapTab = false;
   }
 
   ngOnInit(): void {
     
-
     this.jobservice.getJobs().subscribe((data) => { 
       if (data != undefined) {
         this.jobs_list = data ;
@@ -77,27 +67,13 @@ export class AppComponent {
     this.filterBy_word = event.target.value;
   }
 
-  tabChanged(event:any) {
-    console.log(event.getAttribute("id"))
-    
-    if (event.getAttribute("id") == this.jobsTab.nativeElement.getAttribute("id")) {
-      this.jobsTab.nativeElement.hidden = false;
-      this.jobs_map_tab.nativeElement.hidden = true;
-      // For Template:
-      this.showJobsMapTab = false;
-      this.showJobsTab = true;
-      
+  tabChanged(switchTab:any) {
+   
+    if (switchTab) {
+      this.switchToMapTab = true;
+    }else {
+      this.switchToMapTab = false;
     }
-
-    if (event.getAttribute("id") == this.jobs_map_tab.nativeElement.getAttribute("id")) {
-      this.jobsTab.nativeElement.hidden = true;
-      this.jobs_map_tab.nativeElement.hidden = false;
-      // For Template: 
-      this.showJobsMapTab = true;
-      this.showJobsTab = false;
-    }
-
-    // console.log(this.jobsTab.nativeElement.getAttribute("id").hide())
   }
 
 }
