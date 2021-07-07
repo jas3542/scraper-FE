@@ -5,8 +5,9 @@
     [zoom]="[9]">
 
     <mgl-marker *ngFor="let marker of jobsMarker_list"
-        [lngLat]="[marker.Y, marker.X ]"
-    >marker.Y</mgl-marker>
+        [lngLat]="[marker.X, marker.Y ]"
+        [center]="[52.5847949, -1.9822687]"
+    >marker.Title</mgl-marker>
 </mgl-map>
 
 <!-- </div> -->
