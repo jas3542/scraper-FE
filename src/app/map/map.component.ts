@@ -24,4 +24,9 @@ export class MapComponent implements OnInit {
     });
   }
 
+  jobNameDialog(name){
+    console.log(name);
+
+  }
+
 }

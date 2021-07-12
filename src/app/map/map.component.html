@@ -2,12 +2,17 @@
 <!-- -66.324462890625 , -16.024695711685304 -->
 <mgl-map
     [style]="'mapbox://styles/mapbox/streets-v9'"
-    [zoom]="[9]">
+    [zoom]="[9]"
+    [center]="[-2.05934, 52.58514 ]">
 
     <mgl-marker *ngFor="let marker of jobsMarker_list"
-        [lngLat]="[marker.X, marker.Y ]"
-        [center]="[52.5847949, -1.9822687]"
-    >marker.Title</mgl-marker>
+        
+        [lngLat]="[marker.Y, marker.X ]"
+        (click)="jobNameDialog()"
+    ><div
+    (mouseover)="jobNameDialog(marker.Title)"
+    class="marker">marker</div>
+  ></mgl-marker>
 </mgl-map>
 
 <!-- </div> -->
