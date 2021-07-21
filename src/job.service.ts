@@ -43,7 +43,7 @@ export class JobService {
     );
   }
   public getJobsMarkers() {
-    return this.httpClient.get<JobMarker[]>("https://localhost:44300/jobs/getMapMarkersList")
+    return this.httpClient.get<Job[]>("https://localhost:44300/jobs/getMapMarkersList")
     .pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error

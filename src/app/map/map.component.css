@@ -1,4 +1,15 @@
+#container {
+  width: 100%;
+}
+
 mgl-map {
+  height: 600px;
+  width: 600px;
+  margin: 10px;
+}
+
+/* #job_specs {
   height: 800px;
   width: 800px;
-}
+  margin: 10px;
+} */

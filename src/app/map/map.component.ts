@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { JobService } from 'src/job.service';
-import { JobMarker } from 'src/app/Jobmarker';
+import { Job } from '../Job';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-  jobsMarker_list: JobMarker[] = [];
-  
+  jobsMarker_list: Job[] = [];
+  showJobSpecs: boolean = false;
+  job_details: Job;
+
   constructor(private jobservice: JobService) { }
 
   ngOnInit(): void {
@@ -24,8 +26,10 @@ export class MapComponent implements OnInit {
     });
   }
 
-  jobNameDialog(name){
-    console.log(name);
+  showJobDetails(job){
+    console.log(job);
+    this.showJobSpecs = true;
+    this.job_details = job;
 
   }
 
