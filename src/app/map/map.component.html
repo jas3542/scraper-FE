@@ -7,22 +7,33 @@
         [zoom]="[9]"
         [center]="[-2.05934, 52.58514 ]">
 
-      <mgl-marker *ngFor="let marker of jobsMarker_list"
-          [lngLat]="[marker.Coordinate_X,marker.Coordinate_Y ]">
-        <div (click)="showJobDetails(marker)" class="marker">
-          <img width="15" height="15" src="assets/marker_black.png" alt="">
+      <mgl-marker *ngFor="let marker of jobsMarker_list | keyvalue"
+          [lngLat]="[marker.value[0].Coordinate_X,marker.value[0].Coordinate_Y]">
+        <div (click)="showJobDetails(marker.value)" class="marker">
+          <img width="20" height="20" src="assets/marker_black.png" alt="">
+          <!-- {{marker.key}} -->
+          {{marker.value.length}}
         </div>
       </mgl-marker>
     </mgl-map>
 
 
     <div id="job_specs" class="col-sm"  >
-      <div *ngIf="showJobSpecs">
-        <span style="color:red">{{job_details.Title }}</span>  ||  {{job_details.Company}}  ||  {{job_details.Salary}}
-        <h6 class="card-subtitle mb-2 text-muted">{{job_details.Borough}} || {{job_details.Location}} </h6>
-        <p class="card-text" [innerHTML]="job_details.JobDetailedDescription"></p>
-        <a href="{{job_details.JobDescriptionLink}}" class="card-link job_description"> Apply </a>
+      <div class="card job border-dark" *ngFor="let job of jobs">
+        <div class="card-header">
+            <span style="color:red">{{job.Title }}</span>  ||  {{job.Company}}  ||  {{job.Salary}}
+            </div>
+        <div class="card-body">
+            <h5 class="card-title"></h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{job.Borough}} || {{job.Location}} </h6>
+            <!-- <p class="card-text" [innerHTML]="job.JobDetailedDescription"></p> -->
+            
+        </div>
+        <div class="card-footer text-muted">
+            <a href="{{job.JobDescriptionLink}}" class="card-link job_description"> Apply </a>
+        </div>
       </div>
     </div>
+
   </div>
 </div>

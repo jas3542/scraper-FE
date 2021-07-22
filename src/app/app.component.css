@@ -1,14 +1,16 @@
 #total_jobs {margin: 15px}
-#row_sorting_and_filtering {margin-left: 15px;}
-
-#label_filterby {margin-left: 5px;}
+#row_sorting_and_filtering {margin: 10px;}
+#label_sortBy {margin-right: 10px;}
+#sortBy {margin-right: 10px; width:350px; height: 30px;}
+#label_filterby {margin-right: 10px;}
 #input_filterby {width: 350px;}
-#btn_filterby {margin-left:5px;}
+#btn_filterby {margin-left:10px;}
 
 #jobs_tab {
+    margin: 10px;
     width: 100%;
     height: 100%;
-    background-color: red;;
+    /* background-color: red;; */
     border: 10px black;
 }
 #jobs_map_tab {

@@ -3,3 +3,8 @@ export class JobMarker {
     Y : string;
     Title : string;
 }
+
+export class LongitudLatitude {
+    Longitud: string;
+    Latitude: string
+}

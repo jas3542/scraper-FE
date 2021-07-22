@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Job } from './app/Job';
-import { JobMarker } from './app/JobMarker';
+import { JobMarker, LongitudLatitude } from './app/JobMarker';
 
 @Injectable({
   providedIn: 'any'
@@ -43,7 +43,7 @@ export class JobService {
     );
   }
   public getJobsMarkers() {
-    return this.httpClient.get<Job[]>("https://localhost:44300/jobs/getMapMarkersList")
+    return this.httpClient.get<Map<LongitudLatitude,Job[]>>("https://localhost:44300/jobs/getMapMarkersList")
     .pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error

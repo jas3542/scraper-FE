@@ -3,6 +3,10 @@
     margin: 10px 10px; 
     padding: 10px 10px; 
 }
+.card-header, .card-footer {
+    background-color: #FFFAFA;
+    border: none;
+}
 /* legend { padding: 5px 10px;} */
 .job_description { margin: 15px; }
 /* .apply-options { display: hidden !important; } */

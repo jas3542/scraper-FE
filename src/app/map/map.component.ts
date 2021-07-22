@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { JobService } from 'src/job.service';
 import { Job } from '../Job';
+import { LongitudLatitude } from '../JobMarker';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-  jobsMarker_list: Job[] = [];
+  jobsMarker_list: Map<LongitudLatitude,Job[]>; //= new Map<[string, string],Job[]>();
   showJobSpecs: boolean = false;
-  job_details: Job;
+  jobs: Job[];
 
   constructor(private jobservice: JobService) { }
 
@@ -17,8 +18,6 @@ export class MapComponent implements OnInit {
     this.jobservice.getJobsMarkers().subscribe((data) => {
       if (data != undefined) {
         this.jobsMarker_list = data;
-        // this.total_Jobs = this.jobs_list?.length;
-        //this.jobs_Count.emit(this.jobs?.length);
         console.log("i got the markers ",data);
       }else {
         console.log("no Data received");
@@ -26,10 +25,10 @@ export class MapComponent implements OnInit {
     });
   }
 
-  showJobDetails(job){
-    console.log(job);
+  showJobDetails(jobs){
+    console.log(jobs);
     this.showJobSpecs = true;
-    this.job_details = job;
+    this.jobs = jobs;
 
   }
 

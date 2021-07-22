@@ -1,24 +1,23 @@
 <router-outlet></router-outlet>
-<h4 id="total_jobs">Total Jobs: {{total_Jobs}}</h4>
+<h5 id="total_jobs">Total Jobs: {{total_Jobs}}</h5>
 
-<nav class="nav nav-pills nav-justified">
-    <a class="nav-item nav-link" [ngClass]="{'active' : !switchToMapTab}" href="#" (click)="tabChanged(false)">jobs tab</a>
-    <a class="nav-item nav-link" [ngClass]="{'active' : switchToMapTab}" href="#" (click)="tabChanged(true)">jobs map tab</a>
+<nav class="nav nav-tabs nav-justified">
+    <a class="nav-item nav-link" [ngClass]="{'active' : !switchToMapTab}" href="#" (click)="tabChanged(false)">Jobs</a>
+    <a class="nav-item nav-link" [ngClass]="{'active' : switchToMapTab}" href="#" (click)="tabChanged(true)">Map</a>
     
 </nav>
 
 <div id="jobs_tab" #jobsTab class="nav-item nav-link" *ngIf="!switchToMapTab">
     <div id="row_sorting_and_filtering">
-        <label for="sortBy">Sort By: </label>
+        <label for="sortBy" id="label_sortBy">Sort By: </label>
         <select #selectValue (change)="orderByList(selectValue.value)" name="sortBy_dropdown" id="sortBy">
             <option value=""></option>
             <option value="salary" >Salary</option>
         </select>
-
+   
         <label id="label_filterby" for="filterBy">Filter By: </label>
         <input id="input_filterby" #filter_words [value]="filterBy_word" (keyup)="filterBy_inputChanged($event)"/>
-        <!-- <input id="input_filterby" [value]="filterBy_word"/> -->
-        <button id="btn_filterby" (click)="filterByList()" > Filter </button>
+        <button class="btn btn-light" id="btn_filterby" (click)="filterByList()" > Filter </button>
     </div>
     <app-job [jobs]="jobs_list"></app-job>
 </div>
