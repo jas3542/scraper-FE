@@ -8,6 +8,11 @@ mgl-map {
   margin: 10px;
 }
 
+.card-header, .card-footer {
+  background-color: #FFFAFA;
+  border: none;
+}
+
 /* #job_specs {
   height: 800px;
   width: 800px;

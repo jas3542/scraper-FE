@@ -10,7 +10,7 @@
       <mgl-marker *ngFor="let marker of jobsMarker_list | keyvalue"
           [lngLat]="[marker.value[0].Coordinate_X,marker.value[0].Coordinate_Y]">
         <div (click)="showJobDetails(marker.value)" class="marker">
-          <img width="20" height="20" src="assets/marker_black.png" alt="">
+          <img width="25" height="25" src="assets/marker_black.png" alt="">
           <!-- {{marker.key}} -->
           {{marker.value.length}}
         </div>
@@ -25,7 +25,7 @@
             </div>
         <div class="card-body">
             <h5 class="card-title"></h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{job.Borough}} || {{job.Location}} </h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{job.Location}} || {{job.Borough}} </h6>
             <!-- <p class="card-text" [innerHTML]="job.JobDetailedDescription"></p> -->
             
         </div>
