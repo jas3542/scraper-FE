@@ -16,7 +16,7 @@
         </select>
    
         <label id="label_filterby" for="filterBy">Filter By: </label>
-        <input id="input_filterby" #filter_words [value]="filterBy_word" (keyup)="filterBy_inputChanged($event)"/>
+        <input id="input_filterby" placeholder="+c#, -senior, #java" #filter_words [value]="filterBy_word" (keyup)="filterBy_inputChanged($event)"/>
         <button class="btn btn-light" id="btn_filterby" (click)="filterByList()" > Filter </button>
     </div>
     <app-job [jobs]="jobs_list"></app-job>
