@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Job } from './app/Job';
-import { JobMarker, LongitudLatitude } from './app/JobMarker';
+import { LongitudLatitude } from './app/JobMarker';
 
 @Injectable({
   providedIn: 'any'
